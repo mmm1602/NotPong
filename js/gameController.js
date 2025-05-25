@@ -18,6 +18,14 @@ window.addEventListener("load", () => {
     let paddle0_Y = (canvas.height / 2) - paddleHeight / 2;
     let paddle1_Y = (canvas.height / 2) - paddleHeight / 2;
 
+    // Scores
+    let score0 = 0;
+    let score1 = 0;
+
+    // Game state
+    let paused = false;
+    let singlePlayer = false; // Set true for AI opponent
+
     function drawBall() {
         ctx.beginPath();
         ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
@@ -34,11 +42,28 @@ window.addEventListener("load", () => {
         ctx.closePath();
     }
 
+    function drawScores() {
+        ctx.font = "24px Arial";
+        ctx.fillStyle = "white";
+        ctx.fillText(`Player 1: ${score1}`, 50, 50);
+        ctx.fillText(`Player 2: ${score0}`, canvas.width - 200, 50);
+    }
+
+    function resetBall() {
+        x = canvas.width / 2;
+        y = canvas.height / 2;
+        dx = -dx;
+        dy = 4 * (Math.random() > 0.5 ? 1 : -1);
+    }
+
     function draw() {
+        if (paused) return;
+
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         drawBall();
         drawPaddle(canvas.width - 100, paddle0_Y);
         drawPaddle(100, paddle1_Y);
+        drawScores();
 
         // Ball collision with top/bottom
         if (y + dy > canvas.height - ballRadius || y + dy < ballRadius) {
@@ -63,14 +88,32 @@ window.addEventListener("load", () => {
             dx = -dx;
         }
 
-        // Update ball position
+        // Score logic
+        if (x + ballRadius > canvas.width) {
+            score1++;
+            resetBall();
+        }
+
+        if (x - ballRadius < 0) {
+            score0++;
+            resetBall();
+        }
+
+        // AI for paddle1 if singlePlayer
+        if (singlePlayer) {
+            const paddleCenter = paddle1_Y + paddleHeight / 2;
+            if (y < paddleCenter - 10) paddle1_Y -= paddleSpeed / 1.5;
+            else if (y > paddleCenter + 10) paddle1_Y += paddleSpeed / 1.5;
+        }
+
+        // Move ball
         x += dx;
         y += dy;
 
         requestAnimationFrame(draw);
     }
 
-    // Handle paddle movement
+    // Paddle movement
     document.addEventListener("keydown", (e) => {
         switch (e.key) {
             case "ArrowUp":
@@ -80,10 +123,16 @@ window.addEventListener("load", () => {
                 paddle0_Y = Math.min(canvas.height - paddleHeight, paddle0_Y + paddleSpeed);
                 break;
             case "w":
-                paddle1_Y = Math.max(0, paddle1_Y - paddleSpeed);
+                if (!singlePlayer)
+                    paddle1_Y = Math.max(0, paddle1_Y - paddleSpeed);
                 break;
             case "s":
-                paddle1_Y = Math.min(canvas.height - paddleHeight, paddle1_Y + paddleSpeed);
+                if (!singlePlayer)
+                    paddle1_Y = Math.min(canvas.height - paddleHeight, paddle1_Y + paddleSpeed);
+                break;
+            case " ": // Space to pause
+                paused = !paused;
+                if (!paused) draw();
                 break;
         }
     });
