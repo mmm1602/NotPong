@@ -25,9 +25,36 @@ Try it live right here:
 - Uses an HTML `<canvas>` for rendering the game
 - Controls:
   - Player 1: `W` (up), `S` (down)
-  - Player 2: `↑` (up), `↓` (down)
+
 
 ---
 
-## 📁 Project Structure
+## 🧠 Features
 
+- Smooth paddle control
+- Simple ball physics with collision detection
+- Responsive canvas that resizes to screen
+- Pure frontend — no frameworks, no dependencies
+
+---
+
+## 🧩 Planned Enhancements
+
+- Score tracking
+- Game pause/restart
+- Sound effects
+- AI opponent (single-player mode)
+
+---
+
+## 📜 License
+
+MIT License
+
+---
+
+Made with ❤️, humor, and just enough chaos to call it *Not Pong*.
+
+  - Player 2: `↑` (up), `↓` (down)
+
+---
