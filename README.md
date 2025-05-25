@@ -1,7 +1,33 @@
 # NotPong
-![image](https://user-images.githubusercontent.com/78330316/218288007-22001f7b-d6a0-4b8d-9c40-422b5a78e376.png)
-This is not pong, it is not pong, as it is clearly shown on the name of the repository which hereby indicates that pong is not pong but not pong.
 
-# Serious info
-Okay, all jokes aside this is a remake of pong called not pong, it was made using html, css and javascript.<br>
-You can play it here: https://mmm1602.github.io/NotPong/
+![NotPong Screenshot](https://user-images.githubusercontent.com/78330316/218288007-22001f7b-d6a0-4b8d-9c40-422b5a78e376.png)
+
+> This is not Pong. It is Not Pong. As clearly shown by the name of the repository, it indicates that Pong is not Pong—but rather, Not Pong.
+
+---
+
+## 🎮 What is this?
+
+Okay, jokes aside, **NotPong** is a fun and functional browser-based remake of the classic **Pong** game, created using **HTML**, **CSS**, and **JavaScript**. It's simple, nostalgic, and just slightly rebellious.
+
+---
+
+## 🚀 Play Now
+
+Try it live right here:  
+👉 [NotPong on GitHub Pages](https://mmm1602.github.io/NotPong/)
+
+---
+
+## 🛠️ How It Works
+
+- Built from scratch in **vanilla JavaScript**
+- Uses an HTML `<canvas>` for rendering the game
+- Controls:
+  - Player 1: `W` (up), `S` (down)
+  - Player 2: `↑` (up), `↓` (down)
+
+---
+
+## 📁 Project Structure
+
