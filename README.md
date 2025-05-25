@@ -25,6 +25,7 @@ Try it live right here:
 - Uses an HTML `<canvas>` for rendering the game
 - Controls:
   - Player 1: `W` (up), `S` (down)
+  - Player 2: `↑` (up), `↓` (down)
 
 
 ---
@@ -54,7 +55,3 @@ MIT License
 ---
 
 Made with ❤️, humor, and just enough chaos to call it *Not Pong*.
-
-  - Player 2: `↑` (up), `↓` (down)
-
----
